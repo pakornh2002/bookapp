@@ -10,22 +10,15 @@ const BookForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:8080/books', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(book)
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            console.log(data);
-        } catch (error) {
-            console.error('There has been a problem with your fetch operation:', error);
-        }
+        const response = await fetch('http://localhost:8080/books', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(book)
+        });
+        const data = await response.json();
+        console.log(data);
     };
 
     return (
